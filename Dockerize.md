@@ -23,3 +23,12 @@ The `EXPOSE` instruction is purely documentation for which network port is being
 
 The `ENTRYPOINT` instruction specifies the default application to run when an container has been created from this image.
 
+```
+FROM alpine
+RUN apk add --update nodejs nodejs-npm
+COPY . /src
+WORKDIR /src
+RUN npm install
+EXPOSE 8080
+ENTRYPOINT ["node", "./app.js"]
+```
